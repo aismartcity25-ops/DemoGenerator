@@ -5,19 +5,22 @@
 async function checkAuth(expectedProduct) {
   try {
     const res = await fetch('/api/me');
-    if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    const user = data.user;
+
+    // Not authenticated -> redirect to login
+    if (!user) {
+      window.location.href = `/${expectedProduct}/login.html`;
       return null;
     }
-    const data = await res.json();
-    const user = data.user;
-    
+
     // Check if user has access to the expected product
     if (user.currentProduct !== expectedProduct) {
       // Redirect to the correct product
       window.location.href = `/${expectedProduct}/login.html`;
       return null;
     }
-    
+
     return user;
   } catch (e) {
     console.error('Auth check failed:', e);

@@ -262,11 +262,9 @@
     (async () => {
       try {
         const res = await fetch('/api/me');
-        if (res.ok) {
-          const data = await res.json();
-          if (data.user.currentProduct === 'comunicai') {
-            window.location.href = '/config_comunicai.html';
-          }
+        const data = await res.json().catch(() => ({}));
+        if (data.user && data.user.currentProduct === 'comunicai') {
+          window.location.href = '/config_comunicai.html';
         }
       } catch {}
     })();

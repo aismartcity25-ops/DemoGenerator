@@ -987,5 +987,53 @@
       "aiBg": "#e5e7eb",
       "aiText": "#1f2937"
     }
+  },
+  {
+    "id": "b0c1e3a6-8cbf-4378-8448-2e495b49fcf4",
+    "createdAt": "2026-07-13T11:19:09.839Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.ospedalesassuolo.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.ospedalesassuolo.it"
+    ],
+    "seedUrls": [
+      "https://www.ospedalesassuolo.it"
+    ],
+    "knowledgeBaseId": "a168ee17-a350-40b5-a249-7116f85ece01",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "4b8dd376-3950-4ee1-bec0-a3cc69acc458",
+    "createdAt": "2026-07-13T11:19:34.243Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.ospedalesassuolo.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.ospedalesassuolo.it"
+    ],
+    "seedUrls": [
+      "https://www.ospedalesassuolo.it"
+    ],
+    "knowledgeBaseId": "c7b8c59c-7ba9-4339-b60a-414385411c97",
+    "instructions": "I contatti chiave e numeri di telefono\nL'ospedale ha canali diversi a seconda del tipo di prestazione. Inserire questi dettagli evita che il sistema dia risposte generiche:\n\nCentralino principale: 0536-846.111\n\nPrenotazioni SSN (Servizio Sanitario Nazionale): Numero verde regionale 800.239.123\n\nPrenotazioni Libera Professione / Privati: 0536-846.388 (o il Poliambulatorio Ars Medica: 0536-846.561)\n\nURP (Ufficio Relazioni con il Pubblico): 0536-846.202\n\nPEC istituzionale: ospedale@pec.ospedalesassuolo.it\n\n2. Le regole di orientamento interno (I Colori e i Piani)\nLa struttura dell'ospedale è organizzata per \"Intensità di cura\" identificata da colori, e i reparti sono divisi tra la Scala A e la Scala B. Inserire questo dettaglio aiuta il bot a indirizzare correttamente chi chiede \"dove si trova il reparto X\":\n\nArea Rosa: Ostetricia e Pediatria (Scala B, 2° Piano)\n\nArea Rossa/Verde/Blu: Aree mediche, cardiologia e urgenza (Piani 1, 2 e 3)\n\nArea Lilla/Arancione/Gialla: Chirurgia, ortopedia e ginecologia (Piani 2, 3 and 4)\n\n3. Come gestire i servizi online (Link esterni utili)\nMolti servizi non sono gestiti direttamente dal sito dell'ospedale, ma si appoggiano alla Regione Emilia-Romagna o all'AUSL di Modena. Puoi specificare al bot di rimandare a queste piattaforme per azioni specifiche:\n\nFascicolo Sanitario Elettronico (FSE): Per vedere referti, ricette e cambiare medico.\n\nCUPWeb / App ER Salute: Per prenotare o disdire visite online con il SSN.\n\nPagonline Sanità: Per pagare i ticket online.\n\n4. Modulistica e Documentazione\nSpecifica che i moduli per richiedere la Cartella Clinica, i referti radiologici o i verbali di Pronto Soccorso sono scaricabili direttamente dalla sezione /servizi-al-paziente/modulistica/ e vanno presentati alla Segreteria della Direzione Sanitaria.",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
   }
 ]

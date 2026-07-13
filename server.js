@@ -43,6 +43,12 @@ if (process.env.OPENAI_API_KEY) {
 // voiceMap / detectLanguage ora in src/lib/tts (importati sopra).
 
 const app = express();
+
+// Render (and other PaaS) terminate TLS at the edge and forward requests over
+// HTTP. Telling Express to trust the proxy is required for `req.secure` /
+// `secure: 'auto'` cookies and correct client IP handling.
+app.set('trust proxy', 1);
+
 const PORT = process.env.PORT || 7000;
 const HTTPS_PORT = process.env.HTTPS_PORT || 7000;
 const HTTP_PORT = process.env.HTTP_PORT || 3111;
@@ -95,11 +101,16 @@ app.use((req, res, next) => {
 
 // Session middleware - must be before routers
 app.use(session({
-  secret: process.env.SESSION_SECRET , 
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: ENABLE_HTTPS, // true if HTTPS
+    // 'auto' sets the Secure flag only when the request actually arrived over
+    // HTTPS. Combined with `trust proxy` this is correct behind Render's
+    // TLS-terminating proxy (Secure on the public HTTPS URL) and stays
+    // non-Secure for plain-HTTP local dev so the cookie is still sent.
+    secure: 'auto',
+    sameSite: 'lax',
     maxAge: 8 * 60 * 60 * 1000 // 8 hours
   }
 }));
@@ -294,8 +305,10 @@ apiRouter.get('/me', (req, res) => {
 
   try {
     if (!req.session.user) {
-      console.log('❌ Session check failed: No user in session');
-      return res.status(401).json({ error: 'Non autenticato' });
+      // Not authenticated is a normal state (e.g. login page load), not an error:
+      // return 200 with user:null so clients don't surface a scary 401.
+      console.log('ℹ️ Session check: nessun utente autenticato');
+      return res.json({ user: null });
     }
     
     console.log('✅ Session check successful:', {
@@ -775,6 +788,15 @@ apiRouter.post('/monitoring/alerts/:id/acknowledge', (req, res) => {
 // ─── Start ─────────────────────────────────────────────────────────────────────
 // Move listen to the very end to ensure all routes and middleware are defined first
 function startServer() {
+  // Render (and most PaaS) inject PORT and terminate TLS at the edge, so we
+  // listen as plain HTTP on that port. Without this the app would bind to a
+  // fixed dev port and Render's health check would fail to reach it.
+  if (process.env.PORT) {
+    app.listen(process.env.PORT, '0.0.0.0', () => {
+      console.log(`\n🌐 Demo Generator running on injected PORT ${process.env.PORT} (TLS terminated upstream)`);
+    });
+  }
+
   if (ENABLE_HTTPS) {
     const httpsOptions = loadOrGenerateCerts();
     const httpsServer = https.createServer(httpsOptions, app);
