@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Editor/OS junk
+.DS_Store
+Thumbs.db
+
+# Widget build (rigenerato con npm run build:widget)
+widget-src/node_modules/

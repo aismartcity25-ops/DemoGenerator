@@ -1,0 +1,967 @@
+[
+  {
+    "id": "dfcf1715-c579-4a59-81bd-44d3589c2132",
+    "createdAt": "2026-03-02T08:11:32.227Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://www.astmc.marche.it/it",
+    "searchUrls": [
+      "https://www.astmc.marche.it/it"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "eb76672b-7d4e-4d4e-9a7e-f58dd7f9b4ad",
+    "createdAt": "2026-03-02T08:17:47.306Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.carpi.mo.it",
+    "searchUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "208a38c1-fff5-42d8-ab17-4d3d7eadf2df",
+    "createdAt": "2026-03-02T09:52:08.328Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://www.ats-milano.it",
+    "searchUrls": [
+      "https://www.ats-milano.it"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "6477e108-3fb4-42c0-925a-f2684bcb6d91",
+    "createdAt": "2026-03-02T04:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-4.com",
+    "searchUrls": [
+      "https://example-4.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "5704986f-c9e9-4da0-84bc-7c5ddf93c839",
+    "createdAt": "2026-03-02T05:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-5.com",
+    "searchUrls": [
+      "https://example-5.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "f5293ecc-bcb8-45bb-96e2-9cb47f9db865",
+    "createdAt": "2026-03-02T06:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-6.com",
+    "searchUrls": [
+      "https://example-6.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "4c37f950-0d3d-414e-a276-1df71f520d73",
+    "createdAt": "2026-03-02T07:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-7.com",
+    "searchUrls": [
+      "https://example-7.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "dcf3c644-7edb-485a-ab55-930440fab012",
+    "createdAt": "2026-03-02T08:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-8.com",
+    "searchUrls": [
+      "https://example-8.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "2ed8fb4c-7503-4c37-b51c-0f9988cdd705",
+    "createdAt": "2026-03-02T09:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-9.com",
+    "searchUrls": [
+      "https://example-9.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "87eb34ec-d06d-410d-b3d4-ce10aa2c87bc",
+    "createdAt": "2026-03-02T10:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-10.com",
+    "searchUrls": [
+      "https://example-10.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "d147767c-4617-41ba-ad4b-621b85356ef5",
+    "createdAt": "2026-03-02T11:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-11.com",
+    "searchUrls": [
+      "https://example-11.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "4bd50cc4-919e-4c18-8c6d-40fcb276462b",
+    "createdAt": "2026-03-02T12:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-12.com",
+    "searchUrls": [
+      "https://example-12.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "3337ba43-57bf-4ab4-afbd-fa2e61ace34b",
+    "createdAt": "2026-03-02T13:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-13.com",
+    "searchUrls": [
+      "https://example-13.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "e7d77004-334f-42d0-bcea-565832a9ddeb",
+    "createdAt": "2026-03-02T14:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-14.com",
+    "searchUrls": [
+      "https://example-14.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "10aa8ec3-dd93-486e-8ba7-c274839132bb",
+    "createdAt": "2026-03-02T15:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-15.com",
+    "searchUrls": [
+      "https://example-15.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "922372b3-c8e6-4077-aba0-e477e461cf5b",
+    "createdAt": "2026-03-02T16:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-16.com",
+    "searchUrls": [
+      "https://example-16.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "00a15ee7-d1d1-486a-babf-fc5b6512a359",
+    "createdAt": "2026-03-02T17:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-17.com",
+    "searchUrls": [
+      "https://example-17.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "a4ffb4bd-8a2a-4439-be73-8864b1f722f5",
+    "createdAt": "2026-03-02T18:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-18.com",
+    "searchUrls": [
+      "https://example-18.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "36ff2bc1-b3ef-46b3-9110-41d8adf0191a",
+    "createdAt": "2026-03-02T19:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-19.com",
+    "searchUrls": [
+      "https://example-19.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "2cc8ef58-55cc-4ec0-b6f8-6d429773130e",
+    "createdAt": "2026-03-02T20:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-20.com",
+    "searchUrls": [
+      "https://example-20.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "6e723b89-64c2-4b04-ac7a-2bfa65258287",
+    "createdAt": "2026-03-02T21:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-21.com",
+    "searchUrls": [
+      "https://example-21.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "1e46308e-f1ba-4038-888d-c2a249456eda",
+    "createdAt": "2026-03-02T22:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-22.com",
+    "searchUrls": [
+      "https://example-22.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "69c40b50-996d-40b1-897d-f3b66cadc322",
+    "createdAt": "2026-03-02T24:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "medicai",
+    "clientUrl": "https://example-24.com",
+    "searchUrls": [
+      "https://example-24.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "6538a611-0d8f-4bd8-9dc5-9bb9724dd99e",
+    "createdAt": "2026-03-02T25:00:00.000Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://example-25.com",
+    "searchUrls": [
+      "https://example-25.com"
+    ],
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "4bb93e0f-65e7-4f70-9b49-76d30dfe4c42",
+    "createdAt": "2026-07-10T17:00:57.697Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://example.com",
+    "rootUrls": [
+      "https://example.com"
+    ],
+    "searchUrls": [],
+    "knowledgeBaseId": "5e55a8b7-84ec-4ec9-b795-f33a17d2003e",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "c18d2537-dda7-4041-9042-2582d4b23b62",
+    "createdAt": "2026-07-10T17:05:07.336Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://example.com",
+    "rootUrls": [
+      "https://example.com"
+    ],
+    "searchUrls": [],
+    "knowledgeBaseId": "e8740abe-8d74-426b-8b8f-e43c40628a6a",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "2495a8f7-0bd1-4263-9f64-4a2d1033e49e",
+    "createdAt": "2026-07-10T17:10:26.458Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://httpbin.org/html",
+    "rootUrls": [
+      "https://httpbin.org/html"
+    ],
+    "searchUrls": [],
+    "knowledgeBaseId": "e015199a-7965-45c0-a556-684f5eae875b",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "d5f13c9e-ab1a-4935-b46e-7b312c9e9759",
+    "createdAt": "2026-07-10T17:18:11.899Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://httpbin.org/html",
+    "rootUrls": [
+      "https://httpbin.org/html"
+    ],
+    "searchUrls": [],
+    "knowledgeBaseId": "57575ae5-2bbb-464e-a273-81b14fb877ad",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "988ae7ee-f38a-4dc0-b46e-32c14ebffe41",
+    "createdAt": "2026-07-10T17:18:54.658Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://httpbin.org/html",
+    "rootUrls": [
+      "https://httpbin.org/html"
+    ],
+    "searchUrls": [],
+    "knowledgeBaseId": "ca5812e3-af86-4d97-8320-af7b8e1c1d85",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "6b9ec40f-2ba4-452b-a19e-41a386c69e7f",
+    "createdAt": "2026-07-11T05:41:11.142Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.carpi.mo.it",
+    "rootUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "searchUrls": [],
+    "seedUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "knowledgeBaseId": "df5e891a-8464-41c0-b5a0-c4c8d5f6ccdd",
+    "ingestionStatus": "pending",
+    "instructions": "Test pulizia contenuti",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "1d8e9e71-b588-4e2e-a5dd-699fa3bd047b",
+    "createdAt": "2026-07-11T05:44:34.335Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.carpi.mo.it",
+    "rootUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "searchUrls": [],
+    "seedUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "knowledgeBaseId": "a2e141ae-0a86-44f9-9d5a-dcc0ec99595f",
+    "ingestionStatus": "pending",
+    "instructions": "Test pulizia contenuti",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "68f743e3-7cf1-44f6-955c-fe233d2ca660",
+    "createdAt": "2026-07-11T05:46:36.591Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.carpi.mo.it",
+    "rootUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "searchUrls": [],
+    "seedUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "knowledgeBaseId": "5b502e3d-83d3-4b78-9777-1407397f31bf",
+    "ingestionStatus": "pending",
+    "instructions": "Test pulizia contenuti",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "3d7f49ec-b1ae-4b79-bb38-da24bdb00e17",
+    "createdAt": "2026-07-11T05:49:01.166Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "81be7c64-7d77-440b-8e95-f5a578aa86a0",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "4b76fd30-01ca-4889-ac61-f5fbfe17ec8e",
+    "createdAt": "2026-07-11T05:49:43.485Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.carpi.mo.it",
+    "rootUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "searchUrls": [],
+    "seedUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "knowledgeBaseId": "56c3f1ff-c864-440e-baa6-3547a41f73b2",
+    "ingestionStatus": "pending",
+    "instructions": "Test pulizia contenuti",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "5036476f-fa77-4ccb-9454-3a76883582ff",
+    "createdAt": "2026-07-11T05:51:34.772Z",
+    "createdBy": "mario.rossi",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.carpi.mo.it",
+    "rootUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "searchUrls": [],
+    "seedUrls": [
+      "https://www.comune.carpi.mo.it"
+    ],
+    "knowledgeBaseId": "48189544-713f-4153-8c69-46031113dfeb",
+    "ingestionStatus": "pending",
+    "instructions": "Test pulizia contenuti",
+    "colors": {
+      "primary": "#00b4ff",
+      "secondary": "#0066cc",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "fd90290c-1c52-43c4-abfa-85993fb82a1d",
+    "createdAt": "2026-07-11T06:14:59.962Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "65e8f804-41bf-4075-b65e-90a6786c33e8",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "dcca0cb6-61b3-4122-a4ab-2925264e970a",
+    "createdAt": "2026-07-11T06:32:13.415Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "b3bc4948-fda2-4f4b-8fcc-be17929a9647",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "db509367-6d58-4946-9e05-6fa73292540c",
+    "createdAt": "2026-07-11T06:36:29.219Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "35576d0b-617c-4276-a26b-d1c64911888d",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "c6a1f15a-ad4d-4402-9b5f-c1ecb23ef509",
+    "createdAt": "2026-07-11T06:37:59.075Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "7a32cdcd-fb01-42f0-95af-bf808f0d27d7",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "3e4f9c35-cc72-4b09-beb2-a97ab609b8e9",
+    "createdAt": "2026-07-11T06:39:23.836Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "a48b84d3-7e67-437f-893c-1e7de4f82699",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "d74cced3-5718-43b7-b2c2-c326607353b0",
+    "createdAt": "2026-07-11T06:44:04.448Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "a03b4aa0-366b-4c8a-90e0-7675ec6cc50b",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "b557bf42-f5a3-4595-abf6-1dd3b44c6186",
+    "createdAt": "2026-07-11T06:49:40.677Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "c0c3e01b-f702-4363-b54d-ecd6da5f96e8",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "5c56112b-bebc-452d-a2e0-5e709f24141b",
+    "createdAt": "2026-07-12T06:44:25.072Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "572caec4-e5a7-4173-a20b-159aa9398e54",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "39b401cb-234c-4668-bc8c-072d451a2d59",
+    "createdAt": "2026-07-12T09:20:02.920Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "0d4669e0-7646-4030-bf42-8321c2ead7b2",
+    "ingestionStatus": "pending",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  },
+  {
+    "id": "da8cbc41-64b4-4e87-bcc7-0a1d96c96ff7",
+    "createdAt": "2026-07-12T10:39:47.212Z",
+    "createdBy": "admin",
+    "product": "comunicai",
+    "clientUrl": "https://www.comune.fontanellato.pr.it/",
+    "rootUrls": [],
+    "searchUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "seedUrls": [
+      "https://www.comune.fontanellato.pr.it/"
+    ],
+    "knowledgeBaseId": "67567381-e5ce-4013-bd72-53fcbf9ec260",
+    "instructions": "",
+    "colors": {
+      "primary": "#1a8c5c",
+      "secondary": "#13a06a",
+      "userBg": "#3b82f6",
+      "userText": "#ffffff",
+      "aiBg": "#e5e7eb",
+      "aiText": "#1f2937"
+    }
+  }
+]
