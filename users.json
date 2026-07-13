@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "username": "admin",
+    "password": "$2a$10$pPISDJTP9a3a.cP1gx/2MO/iwSC6wr381VZ1vWskidoTHTB1mynuu", 
+    "name": "Admin",
+    "role": "admin",
+    "products": ["comunicai", "medicai"]
+  },
+  {
+    "id": "2",
+    "username": "mario.rossi",
+    "password": "$2a$10$pPISDJTP9a3a.cP1gx/2MO/iwSC6wr381VZ1vWskidoTHTB1mynuu", 
+    "name": "Mario Rossi",
+    "role": "sales",
+    "products": ["comunicai", "medicai"]
+  },
+  {
+    "id": "3",
+    "username": "giulia.bianchi",
+    "password": "$2a$10$pPISDJTP9a3a.cP1gx/2MO/iwSC6wr381VZ1vWskidoTHTB1mynuu", 
+    "name": "Giulia Bianchi",
+    "role": "sales",
+    "products": ["comunicai"]
+  }
+]
