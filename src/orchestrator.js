@@ -22,6 +22,14 @@ const { buildSystemPrompt } = require('./config/prompts.js');
 const { resolveUploadPath } = require('./lib/uploads');
 const { extractDocumentText, imageToDataUrl } = require('./lib/attachments');
 const { filterHistoryForAPI } = require('./lib/chat');
+const { detectLanguage } = require('./lib/tts');
+
+// Rinforzo deterministico (euristico, no LLM) all'istruzione di lingua nel
+// system prompt: gpt-4o-mini non segue sempre in modo affidabile "rispondi
+// nella lingua dell'utente" quando il resto del prompt e' interamente in
+// italiano (recency/majority-language bias). Un hint esplicito e mirato,
+// posizionato subito prima del messaggio dell'utente, e' molto piu' efficace.
+const LANGUAGE_HINT_LABELS = { en: 'inglese', de: 'tedesco', fr: 'francese', ar: 'arabo' };
 
 const { createMemoryAgent } = require('./agents/memory-agent');
 const { createDatabaseAgent } = require('./agents/database-agent');
@@ -134,9 +142,15 @@ async function orchestrateChat(req, res, openai, { rag } = {}) {
     systemPrompt += '\n\nNOTA SU ALLEGATI: l\'utente ha allegato un\'immagine fornita direttamente nel messaggio in formato visivo. Hai pieno accesso a questa immagine: descrivila e rispondi alle domande su di essa senza mai affermare di non poter vedere immagini.';
   }
 
+  const detectedLang = detectLanguage(messageText);
+  const languageHintLabel = LANGUAGE_HINT_LABELS[detectedLang];
+
   const messagesForAPI = [
     { role: 'system', content: systemPrompt },
     ...filterHistoryForAPI(sessionHistory.slice(-9)),
+    ...(languageHintLabel
+      ? [{ role: 'system', content: `Promemoria: il messaggio dell'utente qui sotto sembra scritto in ${languageHintLabel}. Rispondi in ${languageHintLabel}.` }]
+      : []),
     { role: 'user', content: apiUserContent }
   ];
 
@@ -173,7 +187,7 @@ async function orchestrateChat(req, res, openai, { rag } = {}) {
 
     if (first.finishReason === 'tool_calls' && first.toolCalls.length) {
       const assistantMessage = { role: 'assistant', content: first.text || null, tool_calls: first.toolCalls };
-      const { toolResults, retrieval, attachment: generatedAttachment } = await toolExecutor.execute(first.toolCalls, { demo });
+      const { toolResults, retrieval, attachment: generatedAttachment } = await toolExecutor.execute(first.toolCalls, { demo, languageHintLabel });
 
       const messagesForSecondCall = [...messagesForAPI, assistantMessage, ...toolResults];
 

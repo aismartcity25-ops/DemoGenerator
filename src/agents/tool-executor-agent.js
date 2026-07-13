@@ -22,21 +22,24 @@ const { sendSMS, sendEmail } = require('../lib/notify');
 const { textToSpeech } = require('../lib/tts');
 const { generatePdf } = require('../lib/documents');
 
-async function searchWebsites(query, openai) {
+async function searchWebsites(query, openai, languageHintLabel) {
+  const languageInstruction = languageHintLabel
+    ? `Rispondi SEMPRE in ${languageHintLabel}.`
+    : 'Rispondi SEMPRE nella stessa lingua in cui è scritta la domanda dell\'utente qui sotto (es. se è in inglese rispondi in inglese, se è in tedesco rispondi in tedesco, ecc.); se la lingua non è determinabile, rispondi in italiano.';
   try {
     const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       temperature: 0.3,
       max_tokens: 800,
       messages: [
-        { role: 'system', content: 'Sei un assistente informativo italiano. Rispondi in modo utile e preciso alla domanda dell\'utente usando la tua conoscenza generale. Rispondi sempre in italiano.' },
+        { role: 'system', content: `Sei un assistente informativo. Rispondi in modo utile e preciso alla domanda dell'utente usando la tua conoscenza generale. ${languageInstruction}` },
         { role: 'user', content: query }
       ]
     });
     return { content: response.choices[0].message.content };
   } catch (error) {
     console.error('Web search error:', error.message);
-    return { content: 'Non sono riuscito a trovare informazioni.' };
+    return { content: `[SYSTEM NOTE — not user-facing text: the web search failed. Tell the user${languageHintLabel ? ` in ${languageHintLabel}` : ', in the same language they used in their message,'} that no information could be found.]` };
   }
 }
 
@@ -70,7 +73,7 @@ function createToolExecutorAgent({ openai, ragAgent } = {}) {
 
       switch (fn.name) {
         case 'search_configured_sites': {
-          const result = await ragAgent.search(parsedArgs.query, ctx.demo);
+          const result = await ragAgent.search(parsedArgs.query, ctx.demo, ctx.languageHintLabel);
           outcome = {
             content: result.text,
             meta: { retrieval: { citations: result.citations, confidence: result.confidence, empty: result.empty, context: result.context } }
@@ -78,7 +81,7 @@ function createToolExecutorAgent({ openai, ragAgent } = {}) {
           break;
         }
         case 'search_websites':
-          outcome = await searchWebsites(parsedArgs.query, openai);
+          outcome = await searchWebsites(parsedArgs.query, openai, ctx.languageHintLabel);
           break;
         case 'send_sms':
           outcome = { content: await sendSMS(parsedArgs.phone, parsedArgs.message) };

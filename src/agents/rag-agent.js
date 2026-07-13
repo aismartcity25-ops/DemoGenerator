@@ -21,10 +21,21 @@ const { createQueryPlannerAgent } = require('./query-planner-agent');
 function createRagAgent({ rag, openai } = {}) {
   const queryPlanner = createQueryPlannerAgent({ openai });
 
-  async function search(query, demo) {
+  async function search(query, demo, languageHintLabel) {
+    // Nota per il modello (non testo da mostrare all'utente verbatim): scritto
+    // in inglese ed esplicitamente come istruzione, per evitare che il
+    // modello lo ricopi alla lettera in italiano sovrascrivendo la lingua
+    // dell'utente per recency bias (e' l'ultimo messaggio prima della
+    // risposta finale). Se conosciamo gia' la lingua rilevata (languageHintLabel,
+    // calcolata a monte nell'orchestrator), la nominiamo esplicitamente invece
+    // di lasciare che il modello la ricostruisca dal resto della conversazione.
+    const languageNote = languageHintLabel
+      ? `Tell the user, in ${languageHintLabel}`
+      : 'Tell the user, in the same language they used in their message,';
+
     if (!rag || !demo || !demo.knowledgeBaseId) {
       return {
-        text: 'La base di conoscenza per questo sito è in fase di indicizzazione. Riprova tra qualche minuto.',
+        text: `[SYSTEM NOTE — not user-facing text: the knowledge base for this site is still being indexed. ${languageNote} that no information is available yet and to try again shortly.]`,
         citations: [],
         confidence: 0,
         empty: true
@@ -68,7 +79,8 @@ function createRagAgent({ rag, openai } = {}) {
 
     // Knowledge base vuota/non pronta: nessun fallback di lettura URL diretta.
     return {
-      text: 'Non ho ancora informazioni indicizzate per questo sito. La base di conoscenza è in costruzione.',
+      // Nota per il modello (non testo da mostrare all'utente verbatim) — vedi commento sopra.
+      text: `[SYSTEM NOTE — not user-facing text: no relevant results were found in the indexed knowledge base for this query. ${languageNote} that you could not find information relevant to their request. Do not invent an answer.]`,
       citations: [],
       confidence: 0,
       empty: true

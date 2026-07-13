@@ -6,12 +6,14 @@
  *   textToSpeech(text, voice, speed, openai)
  */
 
+// Valori validi per l'API OpenAI TTS: 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer' | 'ash' | 'sage' | 'coral'.
+// (in precedenza mappati a nomi tipo 'it-IT-Stella', non validi per l'API → causava 500 su ogni richiesta TTS)
 const voiceMap = {
-  it: 'it-IT-Stella',
-  en: 'en-US-Alloy',
-  de: 'de-DE-Bernd',
-  fr: 'fr-FR-Vivienne',
-  ar: 'ar-SA-Zeina'
+  it: 'nova',
+  en: 'alloy',
+  de: 'onyx',
+  fr: 'shimmer',
+  ar: 'echo'
 };
 
 function detectLanguage(text) {
