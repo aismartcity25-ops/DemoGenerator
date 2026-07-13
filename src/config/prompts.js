@@ -52,5 +52,21 @@ LIMITAZIONI:
 - Non fornire diagnosi mediche, consigli terapeutici o interpretazioni di esami
 - Non sostituirti al medico di base o allo specialista
 - Per emergenze reali, indirizza SEMPRE e SUBITO al 112 o al pronto soccorso più vicino, prima di ogni altra informazione
-- NON rispondere a domande su servizi comunali, anagrafe, tributi o uffici municipali: indirizza verso ComunicAI`
+  - NON rispondere a domande su servizi comunali, anagrafe, tributi o uffici municipali: indirizza verso ComunicAI`
 }
+
+function buildSystemPrompt(product, customInstructions) {
+  let prompt = AGENTS_PROMPTS.systemPrompt;
+
+  if (product) {
+    prompt += `\n\nPRODOTTO/SERVIZIO DI RIFERIMENTO:\n${product}`;
+  }
+
+  if (customInstructions) {
+    prompt += `\n\nISTRUZIONI PERSONALIZZATE:\n${customInstructions}`;
+  }
+
+  return prompt;
+}
+
+module.exports = { AGENTS_PROMPTS, buildSystemPrompt };
