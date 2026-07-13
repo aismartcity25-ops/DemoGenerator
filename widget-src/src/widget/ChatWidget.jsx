@@ -43,6 +43,7 @@ export default function ChatWidget({ product = 'comunicai', demoId = '', colors 
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [bubbleState, setBubbleState] = useState('');
   const [isRecording, setIsRecording] = useState(false);
+  const [isTranscribing, setIsTranscribing] = useState(false);
   const [windowOpening, setWindowOpening] = useState(false);
   const [windowClosing, setWindowClosing] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
@@ -59,6 +60,9 @@ export default function ChatWidget({ product = 'comunicai', demoId = '', colors 
   const canvasCtxRef = useRef(null);
   const fileInputRef = useRef(null);
   const imageInputRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
+  const audioStreamRef = useRef(null);
 
   // Applica i colori custom come CSS variables.
   useEffect(() => {
@@ -350,21 +354,69 @@ export default function ChatWidget({ product = 'comunicai', demoId = '', colors 
     setAttachmentError('');
   };
 
+  // Ferma la registrazione e rilascia il microfono (traccia audio).
+  const stopVoiceInput = () => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+      mediaRecorderRef.current.stop();
+    }
+  };
+
+  const startVoiceInput = async () => {
+    setAttachmentError('');
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioStreamRef.current = stream;
+      const mimeType = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : '';
+      const recorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
+      audioChunksRef.current = [];
+
+      recorder.ondataavailable = (e) => {
+        if (e.data && e.data.size > 0) audioChunksRef.current.push(e.data);
+      };
+
+      recorder.onstop = async () => {
+        audioStreamRef.current?.getTracks().forEach((track) => track.stop());
+        audioStreamRef.current = null;
+        setIsRecording(false);
+
+        const audioBlob = new Blob(audioChunksRef.current, { type: recorder.mimeType || 'audio/webm' });
+        audioChunksRef.current = [];
+        if (audioBlob.size === 0) return;
+
+        setIsTranscribing(true);
+        try {
+          const formData = new FormData();
+          formData.append('audio', audioBlob, 'voice-input.webm');
+          const res = await fetch('/api/chat/stt', { method: 'POST', body: formData });
+          const result = await res.json();
+          if (!result.success || !result.data?.text) throw new Error(result.error || 'Trascrizione non riuscita');
+          setInput((prev) => (prev ? `${prev} ${result.data.text}` : result.data.text));
+        } catch (error) {
+          console.error('STT error:', error);
+          setAttachmentError('Non sono riuscito a trascrivere l\'audio. Riprova.');
+        } finally {
+          setIsTranscribing(false);
+        }
+      };
+
+      mediaRecorderRef.current = recorder;
+      recorder.start();
+      setIsRecording(true);
+    } catch (error) {
+      console.error('getUserMedia error:', error);
+      setAttachmentError(
+        error?.name === 'NotAllowedError'
+          ? 'Permesso al microfono negato. Abilitalo dalle impostazioni del browser per usare l\'input vocale.'
+          : 'Non sono riuscito ad accedere al microfono.'
+      );
+    }
+  };
+
   const toggleVoiceInput = () => {
     if (isRecording) {
-      setIsRecording(false);
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: Date.now().toString(),
-          type: 'ai',
-          content: "Registrazione vocale completata. In un'implementazione reale, il riconoscimento vocale convertirebbe il parlato in testo.",
-          timestamp: new Date()
-        }
-      ]);
+      stopVoiceInput();
     } else {
-      setIsRecording(true);
-      setTimeout(() => setIsRecording(false), 3000);
+      startVoiceInput();
     }
   };
 
@@ -548,10 +600,10 @@ export default function ChatWidget({ product = 'comunicai', demoId = '', colors 
               <button
                 className={`chatbot-bubble-input-btn ${isRecording ? 'chatbot-bubble-input-btn--recording' : ''}`}
                 onClick={toggleVoiceInput}
-                disabled={isLoading}
-                title={isRecording ? 'Ferma registrazione' : 'Registra messaggio vocale'}
+                disabled={isLoading || isTranscribing}
+                title={isTranscribing ? 'Trascrizione in corso…' : (isRecording ? 'Ferma registrazione' : 'Registra messaggio vocale')}
               >
-                {isRecording ? <MicOffIcon /> : <MicIcon />}
+                {isTranscribing ? <LoaderIcon className="chatbot__spin" /> : (isRecording ? <MicOffIcon /> : <MicIcon />)}
               </button>
               <button
                 className="chatbot-bubble-send"

@@ -24,8 +24,15 @@ const cors = require('cors');
 const OpenAI = require('openai');
 const https = require('https');
 const { execSync } = require('child_process');
+const multer = require('multer');
 const { buildSystemPrompt } = require('./src/config/prompts.js');
 const { upload, classifyMime } = require('./src/lib/uploads');
+const { transcribeAudio } = require('./src/lib/stt');
+
+// Upload audio per l'input vocale (/api/chat/stt): in memoria, mai su disco
+// (a differenza di `upload` sopra, che persiste gli allegati chat) — la
+// registrazione viene scartata subito dopo la trascrizione.
+const sttUpload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 15 * 1024 * 1024 } });
 
 
 // ─── OpenAI Client ───────────────────────────────────────────────────────────
@@ -584,6 +591,28 @@ apiRouter.post('/chat/tts', async (req, res) => {
     console.error('TTS error:', error.message);
     res.status(500).json({ success: false, error: error.message });
   }
+});
+
+// Demo STT API - input vocale del widget: audio registrato dal browser →
+// testo (Whisper). File tenuto in memoria e scartato subito dopo, non
+// finisce mai su disco (a differenza degli allegati chat persistenti).
+apiRouter.post('/chat/stt', (req, res) => {
+  sttUpload.single('audio')(req, res, async (err) => {
+    if (err) {
+      const message = err.code === 'LIMIT_FILE_SIZE' ? 'Audio troppo grande (max 15MB)' : err.message;
+      return res.status(400).json({ success: false, error: message });
+    }
+    if (!req.file) {
+      return res.status(400).json({ success: false, error: 'File audio richiesto' });
+    }
+    try {
+      const result = await transcribeAudio(req.file.buffer, req.file.originalname, req.file.mimetype, openai);
+      res.json({ success: true, data: { text: result.text } });
+    } catch (error) {
+      console.error('STT error:', error.message);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  });
 });
 
 // Demo Chat Clear API
