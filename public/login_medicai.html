@@ -214,11 +214,9 @@
     (async () => {
       try {
         const res = await fetch('/api/me');
-        if (res.ok) {
-          const data = await res.json();
-          if (data.user.currentProduct === 'medicai') {
-            window.location.href = '/config_medicai.html';
-          }
+        const data = await res.json().catch(() => ({}));
+        if (data.user && data.user.currentProduct === 'medicai') {
+          window.location.href = '/config_medicai.html';
         }
       } catch {}
     })();

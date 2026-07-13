@@ -1,4 +1,27 @@
-const AGENTS_PROMPTS = {
+const LANGUAGE_NAMES = {
+  it: 'italiano',
+  en: 'inglese',
+  fr: 'francese',
+  de: 'tedesco',
+  es: 'spagnolo',
+  cn: 'cinese',
+  jp: 'giapponese',
+  ru: 'russo',
+  pt: 'portoghese',
+  ar: 'arabo',
+  hi: 'hindi',
+  sw: 'swahili',
+  nl: 'olandese',
+  pl: 'polacco',
+  tr: 'turco',
+  sv: 'svedese',
+  no: 'norvegese',
+  fi: 'finlandese',
+  da: 'danese'
+};
+
+
+const AGENT_PROMPTS = {
   name: "MedicAI",
   systemPrompt: `Sei MedicAI, il centralinista virtuale dell'ospedale/azienda sanitaria dell'area geografica configurata.
 
@@ -52,11 +75,16 @@ LIMITAZIONI:
 - Non fornire diagnosi mediche, consigli terapeutici o interpretazioni di esami
 - Non sostituirti al medico di base o allo specialista
 - Per emergenze reali, indirizza SEMPRE e SUBITO al 112 o al pronto soccorso più vicino, prima di ogni altra informazione
-  - NON rispondere a domande su servizi comunali, anagrafe, tributi o uffici municipali: indirizza verso ComunicAI`
+- NON rispondere a domande su servizi comunali, anagrafe, tributi o uffici municipali: indirizza verso ComunicAI`
 }
 
-function buildSystemPrompt(product, customInstructions) {
-  let prompt = AGENTS_PROMPTS.systemPrompt;
+function buildSystemPrompt(product, language = 'it', customInstructions) {
+  const languageName = LANGUAGE_NAMES[language] || LANGUAGE_NAMES.it;
+
+  let prompt = `ISTRUZIONE LINGUA (PRIORITARIA):
+Rispondi SEMPRE in ${languageName}, indipendentemente dalla lingua in cui è scritto questo prompt di sistema.
+
+` + AGENT_PROMPTS.systemPrompt;
 
   if (product) {
     prompt += `\n\nPRODOTTO/SERVIZIO DI RIFERIMENTO:\n${product}`;
@@ -69,4 +97,4 @@ function buildSystemPrompt(product, customInstructions) {
   return prompt;
 }
 
-module.exports = { AGENTS_PROMPTS, buildSystemPrompt };
+module.exports = { AGENT_PROMPTS, LANGUAGE_NAMES, buildSystemPrompt };
