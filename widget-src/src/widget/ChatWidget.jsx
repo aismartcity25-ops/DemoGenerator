@@ -63,6 +63,9 @@ export default function ChatWidget({ product = 'comunicai', demoId = '', colors 
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
   const audioStreamRef = useRef(null);
+  const audioContextRef = useRef(null);
+  const silenceTimerRef = useRef(null);
+  const silenceRafRef = useRef(null);
 
   // Applica i colori custom come CSS variables.
   useEffect(() => {
@@ -361,11 +364,62 @@ export default function ChatWidget({ product = 'comunicai', demoId = '', colors 
     }
   };
 
+  // Silenzio (RMS del segnale sotto soglia) per SILENCE_DURATION_MS di
+  // seguito → ferma automaticamente la registrazione, senza bisogno che
+  // l'utente clicchi una seconda volta: se non parla affatto entro questo
+  // intervallo dal click iniziale, oppure smette di parlare dopo aver
+  // detto qualcosa, la registrazione si interrompe da sola e parte la
+  // trascrizione.
+  const SILENCE_THRESHOLD = 0.02;
+  const SILENCE_DURATION_MS = 2500;
+
+  const startSilenceDetection = (stream) => {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return; // browser senza Web Audio API: solo stop manuale
+    const audioContext = new AudioContextClass();
+    audioContextRef.current = audioContext;
+    const source = audioContext.createMediaStreamSource(stream);
+    const analyser = audioContext.createAnalyser();
+    analyser.fftSize = 2048;
+    source.connect(analyser);
+    const dataArray = new Uint8Array(analyser.fftSize);
+
+    const resetSilenceTimer = () => {
+      if (silenceTimerRef.current) clearTimeout(silenceTimerRef.current);
+      silenceTimerRef.current = setTimeout(stopVoiceInput, SILENCE_DURATION_MS);
+    };
+
+    const monitorVolume = () => {
+      analyser.getByteTimeDomainData(dataArray);
+      let sumSquares = 0;
+      for (let i = 0; i < dataArray.length; i++) {
+        const normalized = (dataArray[i] - 128) / 128;
+        sumSquares += normalized * normalized;
+      }
+      const rms = Math.sqrt(sumSquares / dataArray.length);
+      if (rms > SILENCE_THRESHOLD) resetSilenceTimer();
+      silenceRafRef.current = requestAnimationFrame(monitorVolume);
+    };
+
+    resetSilenceTimer(); // timer attivo da subito: se non parla per niente, si ferma comunque dopo SILENCE_DURATION_MS
+    monitorVolume();
+  };
+
+  const stopSilenceDetection = () => {
+    if (silenceRafRef.current) cancelAnimationFrame(silenceRafRef.current);
+    silenceRafRef.current = null;
+    if (silenceTimerRef.current) clearTimeout(silenceTimerRef.current);
+    silenceTimerRef.current = null;
+    audioContextRef.current?.close();
+    audioContextRef.current = null;
+  };
+
   const startVoiceInput = async () => {
     setAttachmentError('');
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       audioStreamRef.current = stream;
+      startSilenceDetection(stream);
       const mimeType = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : '';
       const recorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
       audioChunksRef.current = [];
@@ -375,6 +429,7 @@ export default function ChatWidget({ product = 'comunicai', demoId = '', colors 
       };
 
       recorder.onstop = async () => {
+        stopSilenceDetection();
         audioStreamRef.current?.getTracks().forEach((track) => track.stop());
         audioStreamRef.current = null;
         setIsRecording(false);
