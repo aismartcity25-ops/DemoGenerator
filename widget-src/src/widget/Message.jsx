@@ -179,27 +179,27 @@ export default function Message({ message, onPlayAudio, onOpenCitation }) {
       <div className="chatbot__message-content-wrapper">
         {!isUser ? (
           <div className="chatbot__message-bubble-wrap">
-            <button
-              className={`chatbot__copy-btn ${copied ? 'copied' : ''}`}
-              onClick={handleCopy}
-              title="Copia messaggio"
-            >
-              {copied ? <CheckIcon /> : <CopyIcon />}
-              <span>{copied ? 'Copiato!' : 'Copia'}</span>
-            </button>
+            <div className={`chatbot__message-actions ${isPlaying || copied ? 'force-visible' : ''}`}>
+              <button
+                className={`chatbot__message-audio-btn ${isPlaying ? 'playing' : ''}`}
+                onClick={handlePlayAudio}
+                title={isPlaying ? 'Ferma audio' : 'Riproduci audio'}
+              >
+                {isPlaying ? <StopIcon /> : <VolumeIcon />}
+              </button>
+              <button
+                className={`chatbot__copy-btn ${copied ? 'copied' : ''}`}
+                onClick={handleCopy}
+                title="Copia messaggio"
+              >
+                {copied ? <CheckIcon /> : <CopyIcon />}
+                <span>{copied ? 'Copiato!' : 'Copia'}</span>
+              </button>
+            </div>
             <MessageBubbleContent message={message} onOpenCitation={onOpenCitation} />
           </div>
         ) : (
           <MessageBubbleContent message={message} onOpenCitation={onOpenCitation} />
-        )}
-        {!isUser && (
-          <button
-            className={`chatbot__message-audio-btn ${isPlaying ? 'playing' : ''}`}
-            onClick={handlePlayAudio}
-            title={isPlaying ? 'Ferma audio' : 'Riproduci audio'}
-          >
-            {isPlaying ? <StopIcon /> : <VolumeIcon />}
-          </button>
         )}
       </div>
     </div>

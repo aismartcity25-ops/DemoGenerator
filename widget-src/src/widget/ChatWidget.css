@@ -100,6 +100,11 @@
   animation: glow-pulse 3.8s ease-in-out infinite;
   z-index: -1;
   opacity: var(--cw-glass-glow-opacity);
+  /* Puramente decorativo: senza questo, l'area cliccabile del FAB si
+     estende 22px oltre il bordo visibile e intercetta i click destinati
+     al bottone invio (che nella finestra chat sta proprio in quella
+     zona, in basso a destra vicino al FAB). */
+  pointer-events: none;
 }
 
 @keyframes glow-pulse {
@@ -524,62 +529,41 @@
 .chatbot__message-content p { margin: 0; }
 .chatbot__message-content p + p { margin-top: 0.75em; }
 
-/* Message content wrapper for TTS button positioning */
-.chatbot__message-content-wrapper {
-  display: flex;
-  align-items: flex-end;
-  gap: 0.5rem;
-}
-
-.chatbot__message-content-wrapper .chatbot__message-content {
-  flex: 1;
-}
-
-/* TTS Audio Button in messages */
+/* TTS Audio Button in messages — dentro chatbot__message-actions,
+   affiancato al pulsante Copia (posizionamento del contenitore condiviso
+   nella sezione FEATURE 2 piu' sotto). Stile a "pillola scura" coerente
+   con .chatbot__copy-btn cosi' che i due bottoni si leggano come coppia. */
 .chatbot__message-audio-btn {
-  background: transparent;
-  border: none;
-  color: #000000;
+  background: rgba(15, 17, 28, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.75);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
   flex-shrink: 0;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255,255,255,0.08) inset;
   transition: all 0.2s ease;
-  opacity: 0.7;
 }
 
 .chatbot__message-audio-btn:hover {
   background: var(--cw-header-bg);
   color: var(--white);
-  opacity: 1;
 }
 
 .chatbot__message-audio-btn.playing {
   background: var(--cw-header-bg);
   color: var(--white);
-  opacity: 1;
   animation: pulse-audio 1s ease-in-out infinite;
 }
 
 @keyframes pulse-audio {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
-}
-
-@media (prefers-color-scheme: dark) {
-  .chatbot__message-audio-btn {
-    color: var(--gray300);
-  }
-  .chatbot__message-audio-btn:hover {
-    color: var(--white);
-  }
-  .chatbot__message-audio-btn.playing {
-    color: var(--white);
-  }
 }
 
 .chatbot__message-content a {
@@ -918,6 +902,10 @@
 
 .chatbot-bubble-text-input {
   flex: 1;
+  /* Senza min-width:0 un <input> flex non si restringe mai sotto la sua
+     larghezza intrinseca (~190px): su schermi stretti questo spinge il
+     bottone invio fuori dalla riga, tagliato via da overflow:hidden. */
+  min-width: 0;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 1.5em;
@@ -940,6 +928,7 @@
   border-radius: 50%;
   width: 2.25rem;
   height: 2.25rem;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1073,11 +1062,34 @@
   max-width: 100%;
 }
 
-/* Pulsante copia — nascosto a riposo */
-.chatbot__copy-btn {
+/* Contenitore condiviso Copia + Audio (TTS), in alto a destra sulla bubble
+   — affiancati cosi' da leggersi come un'unica coppia di azioni, invece
+   che sparsi (audio in basso, copia in alto) come in precedenza. Nascosto
+   a riposo, rivelato al hover sul wrapper della bubble. */
+.chatbot__message-actions {
   position: absolute;
   top: -9px;
   right: -6px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0;
+  transform: translateY(4px) scale(0.9);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Reveal al hover sul wrapper, oppure mentre l'audio e' in riproduzione
+   (cosi' il bottone "ferma audio" resta raggiungibile anche senza hover). */
+.chatbot__message-bubble-wrap:hover .chatbot__message-actions,
+.chatbot__message-actions.force-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.chatbot__copy-btn {
   background: rgba(15, 17, 28, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
@@ -1091,32 +1103,16 @@
   align-items: center;
   gap: 0.28rem;
   white-space: nowrap;
-  /* Nascosto */
-  opacity: 0;
-  transform: translateY(4px) scale(0.9);
-  transition: opacity 0.16s ease, transform 0.16s ease;
-  pointer-events: none;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255,255,255,0.08) inset;
-  z-index: 10;
   line-height: 1;
-}
-
-/* Reveal al hover sul wrapper */
-.chatbot__message-bubble-wrap:hover .chatbot__copy-btn {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
 }
 
 /* Stato "copiato" */
 .chatbot__copy-btn.copied {
-  opacity: 1 !important;
-  pointer-events: auto;
   background: rgba(22, 163, 74, 0.2);
   border-color: rgba(34, 197, 94, 0.4);
   color: #4ade80;
-  transform: translateY(0) scale(1) !important;
 }
 
 /* Brighten sulla bubble AI al hover */
